@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./utils/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -12,6 +13,9 @@ module.exports = {
         "accent-7": "#333",
         success: "#0070f3",
         cyan: "#79FFE1",
+        orange: "#F47514",
+        background: "#FFFFFF",
+        'dark-blue': '#36398d',
       },
       spacing: {
         28: "7rem",
@@ -32,6 +36,13 @@ module.exports = {
         small: "0 5px 10px rgba(0, 0, 0, 0.12)",
         medium: "0 8px 30px rgba(0, 0, 0, 0.12)",
       },
+      flex: {
+        '33': '0 1 33.3333%',
+        '66': '0 1 66.6666%',
+        '50': '0 1 50%',
+        '25': '0 1 25%',
+        '100': '0 1 100%',
+      }
     },
   },
   plugins: [],
