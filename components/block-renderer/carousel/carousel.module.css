@@ -16,6 +16,26 @@
   transform: translateX(-100%);
 }
 
-.myTransition{
-  transition: 2s;
+.myTransition {
+  /* transition: 2s; */
+  animation: scale-down 2s forwards;
+}
+.container > :first-child {
+  /* object-fit: contain; */
+}
+
+@keyframes scale-down {
+  0% {
+    width: 100%;
+    opacity: 1;
+    /* display:block; */
+    /* width:; */
+    /* width:100%; */
+  }
+  100% {
+    width: 0px;
+    opacity: 0.5;
+    /* display: none; */
+    /* opacity:0.5; */
+  }
 }

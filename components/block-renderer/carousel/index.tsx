@@ -24,41 +24,39 @@ export const Carousel = ({ data }) => {
   const [imagesUris, setImageUris] = useState([]);
   const divRef = useRef(null);
 
-  function removeFirst() {
-    const all = divRef.current.querySelectorAll('img');
-    // const firstImg = divRef.current.querySelector('img');
-    // divRef.current.removeChild(firstImg);
-    // Append the removed img element as the last child
-
-
-    // firstImg.classList.remove(styles.moveOut);
-    all.forEach((element, index) => {
-      // if (index != 0)
-      element.classList.remove(styles.moveOut)
-      if (index == 0)
-        element.parentNode.removeChild(element);
-    });
-  }
-
-
-
   useEffect(() => {
-    console.log('====')
     const getImageUris = async (ids: any[]) => {
       const uris = await Promise.all(ids.map(async (id) => await mediaIdToUri(id)));
       setImageUris(uris);
     }
-    const toRemove = [];
+    const toAppend = [];
     getImageUris(imagesIds);
-    // const interval = setInterval(() => {
-    // }, 2000);
+    const interval = setInterval(() => {
+      if (divRef.current) {
+        if (toAppend.length) {
+          const img = divRef.current.querySelector('img');
+          if (img){
+            img.parentNode.appendChild(toAppend.shift())
+            img.parentNode.removeChild(img);
+          }
+
+        }
+        const img = divRef.current.querySelector('img');
+        if (img) {
+          const clonedImg = img.cloneNode(true)
+          toAppend.push(clonedImg);
+          img.classList.add(styles.myTransition)
+        }
+      }
+    }, 2000);
 
     // return clearInterval(interval)
   }, [])
-  return <div className={`flex max-w-4xl overflow-auto mx-auto ${styles.container}`} ref={divRef}>
+  return <div className={`flex max-w-5xl overflow-hidden mx-auto my-2 ${styles.container}`} ref={divRef}>
     {
       imagesUris.map((uri: string) => {
-        return <img key={v4()} src={uri} className={`${styles.myTransition}`} />
+
+        return <img key={v4()} src={uri} className={``} />
       })}
   </div>
 }
