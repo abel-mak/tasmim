@@ -8,6 +8,8 @@ import Paragraph from "./paragraph";
 import { PostTitle } from "./post-title";
 import { Separator } from "./seperator";
 import { List, ListItem } from "./list";
+import { ImageParagraphAnimated } from "./image-paragraph-animation";
+import { Carousel } from "./carousel";
 
 export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
   return <>{(blocks || []).map((block: any) => {
@@ -34,28 +36,26 @@ export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
         return (
           <Heading
             key={v4()}
-            textAlign={block.attributes.textAlign}
-            level={block.attributes.level}
-            content={block.attributes.content}
+            attributes={block.attributes}
           ></Heading>
         );
       case "core/paragraph":
-        // console.log(block);
         return (
           <Paragraph
             key={v4()}
             attributes={block.attributes}
-            // content={block.attributes.content}
-            // textAlign={block.attributes.textAlign}
-            // textColor={block.attributes.textColor}
           ></Paragraph>
         );
+      case 'acf/image-paragraph':
+        return <ImageParagraphAnimated key={v4()} data={block.attributes?.data}></ImageParagraphAnimated>
       case 'core/list':
         return <List attributes={block.attributes} key={v4()}><BlockRenderer blocks={block.innerBlocks} /></List>
       case 'core/list-item':
         return <ListItem key={v4()} attributes={block.attributes}></ListItem>
       case 'core/separator':
         return <Separator key={v4()} attributes={block.attributes}></Separator>
+      case 'acf/carousel':
+        return <Carousel key={v4()} data={block.attributes.data}></Carousel>
       default:
         console.log('unkown block', block)
     }

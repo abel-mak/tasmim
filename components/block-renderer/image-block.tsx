@@ -1,13 +1,13 @@
 function alignToJustify(align: string) {
   switch (align) {
     case 'left':
-      return 'start';
+      return 'justify-start';
     case 'right':
-      return 'end';
+      return 'justify-end';
     case 'center':
-      return 'center'
+      return 'justify-center'
     default:
-      return 'start';
+      return 'justify-start';
   }
 }
 
@@ -15,7 +15,7 @@ function alignToJustify(align: string) {
 export const ImageBlock = ({ attributes }) => {
   const { url, width, height, align } = attributes;
 
-  return <div className={`flex justify-${alignToJustify(align)}`}>
+  return <div className={`flex ${alignToJustify(align)}`}>
     <img src={url} alt="" width={width} height={height} />
   </div>
 }

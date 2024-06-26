@@ -1,3 +1,5 @@
+import React from "react";
+import { spacing } from "../../utils/spacing";
 
 function getFlex(width: string) {
   switch (parseInt(width)) {
@@ -16,8 +18,20 @@ function getFlex(width: string) {
 }
 
 export const Column = ({ children, attributes }) => {
-  const { width } = attributes || {}
-  const myClass = `flex-${parseInt(width)}`;
+  const { width, style } = attributes || {};
+  // const { style } = spacing || {};
+  // const myClass = `flex-${parseInt(width)}`;
 
-  return <div className={`${getFlex(width)}`} style={{color: 'inherit'}}>{children}</div>
+  return React.createElement('div', {
+    className: `${getFlex(width)}`,
+    children,
+    style: {
+      color: 'inherit',
+      paddingTop: spacing[style?.spacing?.padding?.top] || '0rem',
+      paddingBottom: spacing[style?.spacing?.padding?.bottom] || '0rem',
+      paddingLeft: spacing[style?.spacing?.padding?.left] || '0rem',
+      paddingRight: spacing[style?.spacing?.padding?.right] || '0rem',
+    }
+  })
+  // return <div className={`${getFlex(width)}`} style={{}}>{children}</div>
 }

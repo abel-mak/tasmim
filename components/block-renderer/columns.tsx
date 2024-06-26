@@ -10,16 +10,16 @@ function getColors(textColor: string, backgroundColor: string) {
 }
 
 export const Columns = ({ children, attributes }) => {
-  const { textColor, backgroundColor } = attributes;
+  const { textColor, backgroundColor, align } = attributes;
   return (
-    <div className="w-full p-3"
+    <div className="w-full"
       style={{
         backgroundColor: theme[backgroundColor] || 'inherit',
         color: theme[textColor] || 'inherit',
       }}
     >
       <div
-        className={`max-w-7xl mx-auto flex`}
+        className={`${(align == 'full') ? '' : 'max-w-7xl'} mx-auto flex`}
       >
         {children}
       </div>
