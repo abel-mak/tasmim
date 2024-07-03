@@ -57,7 +57,7 @@ export const ImageParagraphAnimated = ({ data }) => {
       },
       {
         root: null, // Use the viewport as the root
-        // rootMargin: '0px',
+        rootMargin: '0px',
         threshold: 0.1, // Trigger when 10% of the target is visible
       }
     );

@@ -7,28 +7,9 @@
   opacity: 0;
 }
 .left {
-  transform: translateX(-500px);
-  /* transition: 1s; */
+  transform: translateX(-50%);
 }
 
 .right {
-  transform: translateX(500px);
-  /* transition: 1s; */
+  transform: translateX(50%);
 }
-/* @keyframes move-left {
-  from {
-    left: -100px;
-  }
-  to {
-    left: calc(50% - 50px);
-  }
-}
-
-@keyframes move-right {
-  from {
-    right: -100px;
-  }
-  to {
-    right: calc(50% - 50px);
-  }
-} */

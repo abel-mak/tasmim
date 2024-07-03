@@ -32,6 +32,9 @@ export const Carousel = ({ data }) => {
     const toAppend = [];
     getImageUris(imagesIds);
     const interval = setInterval(() => {
+      /** 1- add css class that reduce the first image to 0 pixel clone it and save it for next iteration 
+       *  2- remove the first image and append the cloned version of it saved from the iteration before
+       */
       if (divRef.current) {
         if (toAppend.length) {
           const img = divRef.current.querySelector('img');
@@ -50,9 +53,9 @@ export const Carousel = ({ data }) => {
       }
     }, 2000);
 
-    // return clearInterval(interval)
+    return () => clearInterval(interval)
   }, [])
-  return <div className={`flex max-w-5xl overflow-hidden mx-auto my-2 ${styles.container}`} ref={divRef}>
+  return <div className={`flex max-w-5xl overflow-hidden mx-auto mb-2 mt-5 ${styles.container}`} ref={divRef}>
     {
       imagesUris.map((uri: string) => {
 

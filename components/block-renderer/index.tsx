@@ -10,6 +10,8 @@ import { Separator } from "./seperator";
 import { List, ListItem } from "./list";
 import { ImageParagraphAnimated } from "./image-paragraph-animation";
 import { Carousel } from "./carousel";
+import { PrestationCard } from "./prestation-card";
+import { ContactUsForm } from "./contact-us-form";
 
 export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
   return <>{(blocks || []).map((block: any) => {
@@ -56,6 +58,15 @@ export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
         return <Separator key={v4()} attributes={block.attributes}></Separator>
       case 'acf/carousel':
         return <Carousel key={v4()} data={block.attributes.data}></Carousel>
+      case 'acf/prestation-card':
+        return <PrestationCard key={v4()} data={block.attributes.data}></PrestationCard>
+      case 'acf/form-generator':
+        switch (block.attributes?.data?.name) {
+          case 'contact-us-form':
+            return <ContactUsForm key={v4()} data={block.attributes.data}></ContactUsForm>
+          case 'home':
+            return <HomeForm key={v4()}></HomeForm>
+        }
       default:
         console.log('unkown block', block)
     }
