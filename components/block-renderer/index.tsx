@@ -15,6 +15,7 @@ import { ContactUsForm } from "./forms/contact-us-form";
 import { HomeForm } from "./forms/home-form";
 import { CallToActionBtn } from "./call-to-action-btn";
 import { HomeSteps } from "./steps/home-steps";
+import { TheAgencySteps } from "./steps/the-agency-steps";
 
 export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
   return <>{(blocks || []).map((block: any) => {
@@ -76,6 +77,8 @@ export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
         switch(block.attributes?.data?.name){
           case 'home':
             return <HomeSteps key={v4()} data={block.attributes?.data}></HomeSteps>
+          case 'the-agency':
+            return <TheAgencySteps key={v4()} data={block.attributes?.data}></TheAgencySteps>
         }
       default:
         console.log('unkown block', block)
