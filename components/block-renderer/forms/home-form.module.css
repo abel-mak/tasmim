@@ -1,0 +1,6 @@
+.myInput::-webkit-input-placeholder {
+color: white;
+}
+.myTextarea::-webkit-input-placeholder {
+  color: white;
+}

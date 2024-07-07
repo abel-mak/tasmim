@@ -24,7 +24,7 @@ export const Columns = ({ children, attributes }) => {
       }}
     >
       <div
-        className={`${(align == 'full') ? '' : 'max-w-7xl'} mx-auto flex`}
+        className={`${(align == 'full') ? '' : 'max-w-7xl'} mx-auto flex flex-wrap sm:flex-nowrap`}
       >
         {children}
       </div>

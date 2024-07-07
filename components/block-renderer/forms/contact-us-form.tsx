@@ -1,21 +1,8 @@
 import { useState } from "react";
+import { v4 } from "uuid";
 import { Heading } from "../heading";
+import { getInputsArray } from "./forms-utils";
 
-const getInputsArray = (data: { [key: string]: any }) => {
-  const inputCount = data?.text_input || 0;
-  const res = [];
-  for (let i = 0; i < inputCount; i++) {
-    res.push({
-      placeholder: data[`text_input_${i}_placeholder`],
-      type: data[`text_input_${i}_type`],
-      name: data[`text_input_${i}_name`],
-      required: data[`text_input_${i}_required`] !== "0",
-      options: data[`text_input_${i}_options`],
-      order: Number(data[`text_input_${i}_order`]),
-    });
-  }
-  return res;
-};
 
 export const ContactUsForm = ({ data }) => {
   const inputArray = getInputsArray(data);
@@ -37,6 +24,7 @@ export const ContactUsForm = ({ data }) => {
           if (input.type == "simple")
             return (
               <input
+                key={v4()}
                 className="bg-transparent border-[#ccc6f8] border-b-2
               focus:outline-none"
                 type="text"
@@ -47,6 +35,7 @@ export const ContactUsForm = ({ data }) => {
           else if (input.type == "textarea") {
             return (
               <textarea
+                key={v4()}
                 className="bg-transparent border-[#ccc6f8] resize-none 
               border-b-2 focus:outline-none"
                 placeholder={input.placeholder}
@@ -78,7 +67,7 @@ export const ContactUsForm = ({ data }) => {
                   readOnly />
                 <div className={`absolute mr-1 ${isFocused ? 'block' : 'hidden'} `}>
                   {options.map((opt) => {
-                    return <div onClick={() => { setValue(opt) }} className={` cursor-default pl-2 hover:bg-blue-500 bg-white
+                    return <div key={v4()} onClick={() => { setValue(opt) }} className={` cursor-default pl-2 hover:bg-blue-500 bg-white
                    hover:text-white`}
                     >
                       {opt}

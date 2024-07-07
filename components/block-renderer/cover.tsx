@@ -10,8 +10,8 @@ export const Cover = ({ attributes, children }) => {
   // else widthStyle.width = width
 
 
-  return <div className={`relative flex items-center h-full`}>
-    <div className="absolute w-full">
+  return <div className={`relative inline`}>
+    <div className="absolute w-full flex-1 h-full">
       {children}
     </div>
     <img src={url} alt={''} style={{ ...heightStyle, ...widthStyle }} className='object-cover h-full w-full' />

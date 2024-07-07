@@ -11,7 +11,10 @@ import { List, ListItem } from "./list";
 import { ImageParagraphAnimated } from "./image-paragraph-animation";
 import { Carousel } from "./carousel";
 import { PrestationCard } from "./prestation-card";
-import { ContactUsForm } from "./contact-us-form";
+import { ContactUsForm } from "./forms/contact-us-form";
+import { HomeForm } from "./forms/home-form";
+import { CallToActionBtn } from "./call-to-action-btn";
+import { HomeSteps } from "./steps/home-steps";
 
 export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
   return <>{(blocks || []).map((block: any) => {
@@ -57,15 +60,22 @@ export const BlockRenderer = ({ blocks }: { blocks: any[] }) => {
       case 'core/separator':
         return <Separator key={v4()} attributes={block.attributes}></Separator>
       case 'acf/carousel':
-        return <Carousel key={v4()} data={block.attributes.data}></Carousel>
+        return <Carousel key={v4()} data={block.attributes?.data}></Carousel>
       case 'acf/prestation-card':
-        return <PrestationCard key={v4()} data={block.attributes.data}></PrestationCard>
+        return <PrestationCard key={v4()} data={block.attributes?.data}></PrestationCard>
       case 'acf/form-generator':
         switch (block.attributes?.data?.name) {
           case 'contact-us-form':
-            return <ContactUsForm key={v4()} data={block.attributes.data}></ContactUsForm>
+            return <ContactUsForm key={v4()} data={block.attributes?.data}></ContactUsForm>
           case 'home':
-            return <HomeForm key={v4()}></HomeForm>
+            return <HomeForm key={v4()} data={block.attributes?.data}></HomeForm>
+        }
+      case 'acf/cat-btn':
+        return <CallToActionBtn key={v4()}  data={block.attributes?.data}/>
+      case 'acf/steps':
+        switch(block.attributes?.data?.name){
+          case 'home':
+            return <HomeSteps key={v4()} data={block.attributes?.data}></HomeSteps>
         }
       default:
         console.log('unkown block', block)

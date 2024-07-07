@@ -76,7 +76,7 @@ export const ImageParagraphAnimated = ({ data }) => {
   return (
     <div
       className={`flex ${paragraphPosition == "left" ? "flex-row-reverse" : ""
-        } max-w-5xl mx-auto`}
+        } max-w-5xl mx-auto lg:overflow-visible overflow-hidden`}
     >
       <div
         style={{ transition: "1s" }}
