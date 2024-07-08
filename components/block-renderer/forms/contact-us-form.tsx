@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 } from "uuid";
+import { CallToActionBtn } from "../call-to-action-btn";
 import { Heading } from "../heading";
 import { getInputsArray } from "./forms-utils";
 
@@ -37,7 +38,7 @@ export const ContactUsForm = ({ data }) => {
               <textarea
                 key={v4()}
                 className="bg-transparent border-[#ccc6f8] resize-none 
-              border-b-2 focus:outline-none"
+              border-b-2 focus:outline-none basis-full"
                 placeholder={input.placeholder}
                 name={input.name}
               />
@@ -59,7 +60,7 @@ export const ContactUsForm = ({ data }) => {
               <div>
                 <input placeholder={input.placeholder} className="
                         focus:outline-none bg-transparent border-[#ccc6f8] 
-                        border-b-2 cursor-default"
+                        border-b-2 cursor-default w-full"
                   onFocus={handleFocus}
                   onBlur={handleBlur}
                   value={value}
@@ -78,6 +79,7 @@ export const ContactUsForm = ({ data }) => {
           }
         })}
       </div>
+      <CallToActionBtn data={{label: 'Envoyer'}}></CallToActionBtn>
     </div>
   );
 };

@@ -6,11 +6,11 @@ export const HomeForm = ({ data }) => {
   const inputArray = getInputsArray(data);
 
   return (
-      <div className="flex flex-col xl:w-1/2 mx-auto justify-center text-white h-full">
+      <div className="flex flex-col xl:w-1/2 mx-auto justify-center text-white h-full py-10">
         {inputArray.map((input) => {
           if (input.type == "simple")
             return (
-          <div key={v4()} className="flex flex-col">
+          <div key={v4()} className="flex flex-col my-3">
             <label className="text-[#373a8e] font-bold">{input.placeholder}</label>
             <input
               className={`bg-transparent border-2  my-2
@@ -22,7 +22,7 @@ export const HomeForm = ({ data }) => {
             );
           else if (input.type == "textarea") {
             return (
-              <div key={v4()} className="flex flex-col">
+              <div key={v4()} className="flex flex-col my-3">
                 <label className="text-[#373a8e] font-bold">{input.placeholder}</label>
                 <textarea
                   className={`bg-transparent resize-none 
@@ -37,14 +37,16 @@ export const HomeForm = ({ data }) => {
             const [value, setValue] = useState("");
 
             const handleFocus = () => {
+              console.log('focus')
               setIsFocused(true);
             };
 
             const handleBlur = () => {
+              console.log("blur");
               setTimeout(() => setIsFocused(false), 300);
             };
             return (
-              <div key={v4()} className="flex flex-col" >
+              <div key={v4()} className="flex flex-col my-3 relative" >
                 <label className="text-[#373a8e] font-bold">{input.placeholder}</label>
                 <input
                   className={`
@@ -57,7 +59,7 @@ export const HomeForm = ({ data }) => {
                   readOnly
                 />
                 <div
-                  className={`absolute mr-1 ${isFocused ? "block" : "hidden"} top-[12rem]`}
+                  className={`absolute mr-1 ${isFocused ? "block" : "hidden"} top-[4rem]`}
                 >
                   {options.map((opt) => {
                     return (

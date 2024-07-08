@@ -38,7 +38,7 @@ export const PrestationCard = ({ data }) => {
   return (
     <div
       ref={divRef}
-      className="p-4 m-2 rounded-xl shadow-md h-100 w-100"
+      className="p-4 m-2 rounded-xl shadow-md h-72"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -1,18 +1,8 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { v4 } from "uuid";
+import { dataToArray } from "./utils";
 
-const dataToArray = (data: any = {}) => {
-  const stepCount = data.step;
-  const res = [];
-
-  for (let i = 0; i < stepCount; i++) {
-    res.push({
-      title: data[`step_${i}_title`],
-      value: data[`step_${i}_value`],
-    });
-  }
-  return res;
-};
 
 export const HomeSteps = ({ data }) => {
   const stepsArray = dataToArray(data);
@@ -50,7 +40,7 @@ export const HomeSteps = ({ data }) => {
           ? "sm:border-l-[5px] border-l-[10px]"
           : "sm:border-r-[5px] sm:border-l-0 border-l-[10px] border-r-0";
         return (
-          <div
+          <div key={v4()}
             className={`flex flex-wrap h-[280px] sm:h-48 md:h-40 lg:h-40 
           ${indexPair ? "flex-row-reverse" : ""}`}
           >

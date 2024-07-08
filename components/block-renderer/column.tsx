@@ -23,7 +23,7 @@ export const Column = ({ children, attributes }) => {
   // const myClass = `flex-${parseInt(width)}`;
 
   return React.createElement('div', {
-    className: `${getFlex(width)}`,
+    className: `${getFlex(width)} basis-full`,
     children,
     style: {
       color: 'inherit',
