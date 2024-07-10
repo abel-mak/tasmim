@@ -13,10 +13,6 @@ const toImageId = (data: any) => {
   return result;
 }
 
-function animate() {
-
-}
-
 
 
 export const Carousel = ({ data }) => {
@@ -26,8 +22,8 @@ export const Carousel = ({ data }) => {
 
   useEffect(() => {
     const getImageUris = async (ids: any[]) => {
-      const uris = await Promise.all(ids.map(async (id) => await mediaIdToUri(id)));
-      setImageUris(uris);
+      const urisAndId = await Promise.all(ids.map(async (id) => ({uri: await mediaIdToUri(id), id: v4()})));
+      setImageUris(urisAndId);
     }
     const toAppend = [];
     getImageUris(imagesIds);
@@ -57,9 +53,9 @@ export const Carousel = ({ data }) => {
   }, [])
   return <div className={`flex max-w-5xl overflow-hidden mx-auto mb-2 mt-5 ${styles.container}`} ref={divRef}>
     {
-      imagesUris.map((uri: string) => {
-
-        return <img key={v4()} src={uri} className={``} />
+      imagesUris.map(({uri, index}) => {
+        // console.log('========');
+        return <img key={uri.id} src={uri} className={``} />
       })}
   </div>
 }

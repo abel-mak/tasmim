@@ -1,6 +1,5 @@
 export const Cover = ({ attributes, children }) => {
   const { url, width, height, minHeight, align } = attributes;
-  console.log(attributes);
   const widthStyle: any = {
     // ((align == 'full') ? (...{ minWidth: '100%'}): (...{ }))
   };
